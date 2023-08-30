@@ -1,8 +1,8 @@
 import 'dart:math';
 
+import 'package:f02_todolist/components/lista_tarefa.dart';
 import 'package:f02_todolist/models/tarefa.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 void main() {
   runApp(ToDoListApp());
@@ -41,7 +41,9 @@ class _MyHomePageState extends State<MyHomePage> {
         titulo: _tarefaController.text,
         data: DateTime.now());
 
-    //TODO: incrementar lista de tarefas
+    setState(() {
+      _tarefas.add(novaTarefa);
+    });
   }
 
   @override
@@ -72,38 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 20,
             ),
             // lista de tarefas
-            Container(
-              height: 300,
-              child: ListView.builder(
-                  itemCount: _tarefas.length,
-                  itemBuilder: (context, index) {
-                    final tarefa = _tarefas[index];
-                    return Card(
-                      child: Row(
-                        children: [
-                          Container(
-                              margin: const EdgeInsets.symmetric(
-                                horizontal: 15,
-                                vertical: 10,
-                              ),
-                              padding: const EdgeInsets.all(10),
-                              child: Text(
-                                  DateFormat('dd/MM/yyyy').format(tarefa.data),
-                                  style: TextStyle(
-                                      color: tarefa.data.day >=
-                                              DateTime.now().day
-                                          ? Theme.of(context)
-                                              .colorScheme
-                                              .primary
-                                          : Theme.of(context)
-                                              .colorScheme
-                                              .secondary))),
-                          Text(tarefa.titulo),
-                        ],
-                      ),
-                    );
-                  }),
-            ),
+            ListaTarefa(listaTarefas: _tarefas),
           ],
         ),
       ),
