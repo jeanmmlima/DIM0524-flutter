@@ -3,6 +3,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 
 class FormTarefa extends StatelessWidget {
+  Function(String) onSubmit;
+  FormTarefa(this.onSubmit);
+
   @override
   Widget build(BuildContext context) {
     final _tarefaController = TextEditingController();
@@ -12,6 +15,7 @@ class FormTarefa extends StatelessWidget {
         return;
       }
       //passando dado para componente pai
+      onSubmit(_tarefaController.text);
     }
 
     return Container(

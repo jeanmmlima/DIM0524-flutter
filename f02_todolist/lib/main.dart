@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:f02_todolist/components/form_tarefa.dart';
 import 'package:f02_todolist/components/lista_tarefa.dart';
 import 'package:f02_todolist/models/tarefa.dart';
 import 'package:flutter/material.dart';
@@ -33,12 +34,10 @@ class _MyHomePageState extends State<MyHomePage> {
     Tarefa(id: 't1', titulo: 'Jogar', data: DateTime.now()),
   ];
 
-  final _tarefaController = TextEditingController();
-
-  _novaTarefa() {
+  _novaTarefa(String tarefa) {
     Tarefa novaTarefa = Tarefa(
         id: Random().nextInt(9999).toString(),
-        titulo: _tarefaController.text,
+        titulo: tarefa,
         data: DateTime.now());
 
     setState(() {
@@ -57,19 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             // formulario de tarefa
-            Container(
-              child: Column(
-                children: [
-                  TextField(
-                    controller: _tarefaController,
-                    decoration:
-                        const InputDecoration(labelText: 'nova tarefa...'),
-                  ),
-                  ElevatedButton(
-                      onPressed: _novaTarefa, child: Text('Cadastrar tarefa'))
-                ],
-              ),
-            ),
+
+            FormTarefa(_novaTarefa),
             const SizedBox(
               height: 20,
             ),
