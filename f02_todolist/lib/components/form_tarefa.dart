@@ -42,6 +42,7 @@ class _FormTarefaState extends State<FormTarefa> {
     }
 
     return Container(
+      padding: EdgeInsets.all(12),
       child: Column(
         children: [
           TextField(
@@ -53,7 +54,7 @@ class _FormTarefaState extends State<FormTarefa> {
               children: <Widget>[
                 Expanded(
                   child: Text(
-                      'Data selecionada ${DateFormat('dd/mm/yyyy').format(_dataSelecionada)}'),
+                      'Data selecionada ${DateFormat('dd/MM/y').format(_dataSelecionada)}'),
                 ),
                 TextButton(
                     onPressed: _showDatePicker, child: Text('Selecionar data'))

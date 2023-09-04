@@ -37,7 +37,7 @@ class ListaTarefa extends StatelessWidget {
                         vertical: 10,
                       ),
                       padding: EdgeInsets.all(10),
-                      child: Text(DateFormat('d MMM y').format(tarefa.data),
+                      child: Text(DateFormat('dd/MM/y').format(tarefa.data),
                           style: TextStyle(
                               color: tarefa.data.day >= DateTime.now().day
                                   ? Theme.of(context).colorScheme.primary
