@@ -1,6 +1,6 @@
 import 'package:f04_carrinho_provider/models/catalog.dart';
 import 'package:f04_carrinho_provider/models/item.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 class CartModel extends ChangeNotifier {
   late CatalogModel _catalog;
